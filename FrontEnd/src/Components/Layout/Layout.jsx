@@ -6,7 +6,7 @@ function Layout() {
     <div>
         <div className="navbar bg-slate-100 mb-10">
             <div className="flex-1">
-                <a className="btn btn-ghost normal-case text-xl">Logo</a>
+                <a className="btn btn-ghost normal-case text-xl">Taskify</a>
             </div>
             <div className="flex-none gap-2">
                 <div className="form-control">

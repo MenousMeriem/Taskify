@@ -1,15 +1,17 @@
 import React from 'react'
 import Layout from '../Components/Layout/Layout'
-import MiniCartes from '../Components/Cartes/MiniCartes'
-import ContainerCarte from '../Components/Cartes/ContainerCarte'
-
+import GrandeCarte from '../Components/Cartes/GrandeCarte'
+import ContainerPage from './ContainerPage'
+import {useState} from "react"
 function Accueil() {
+  const [fetching, setFetching] = useState(true)
   return (
-    <div>
+    <div className='px-16'>
         <Layout/>
-        <ContainerCarte/>
+        <GrandeCarte fetching={fetching} />
+        <ContainerPage fetching={fetching} setFetching={setFetching} />
     </div>
-  )
-}
+  )}
+
 
 export default Accueil

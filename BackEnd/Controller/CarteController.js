@@ -1,5 +1,6 @@
 const expressAsyncHandler = require('express-async-handler')
-const carteModel = require('../Models/carteModel')
+const carteModel = require("../Models/CarteModel")
+const containerModel = require("../Models/ContainerModel")
 
 // Afficher Toutes les cartes : 
 exports.afficherCarte = expressAsyncHandler(async(req,res)=> {
@@ -19,7 +20,7 @@ exports.ajouterCarte = expressAsyncHandler(async(req,res) => {
             res.status(400).json('Aucune carte n est disponible')
         }
         await carteModel.create ({
-            Titre,
+            Contenu,
             Urgence,
         })
     } catch (error) {
@@ -44,6 +45,7 @@ exports.modifierCarte = expressAsyncHandler(async(req,res)=> {
 exports.supprimerCarte = expressAsyncHandler(async (req,res) => {
     try {
         const {id} = req.params 
+        await containerModel.findOneAndUpdate({CarteId: {$in: id}}, {$pull: id})
         await carteModel.findByIdAndDelete(id)
         res.status(202).json("Carte Supprimée")
     } catch (error) {
